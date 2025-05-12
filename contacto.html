@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contacto | Dulce Sabor</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="img/logo.png" alt="Logo Dulce Sabor" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section class="formulario-contacto">
+          <h2>¡Contáctanos!</h2>
+          <p>Si tienes alguna pregunta o deseas hacer un pedido, ¡escríbenos!</p>
+
+          <form id="formContacto">
+            <div class="campo">
+              <label for="nombre">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" required />
+            </div>
+          
+            <div class="campo">
+              <label for="correo">Correo electrónico:</label>
+              <input type="email" id="correo" name="correo" required />
+            </div>
+          
+            <div class="campo">
+              <label for="tipoProducto">Tipo de producto:</label>
+              <select id="tipoProducto" name="tipoProducto" required>
+                <option value="">Seleccione un tipo de producto</option>
+                <option value="pieManzana">Pie de Manzana - $15.00</option>
+                <option value="cupcakesVainilla">Cupcakes Vainilla - $10.00</option>
+                <option value="tartaFrambuesa">Tarta de Frambuesa - $18.00</option>
+                <option value="galletasAvena">Galletas de Avena - $5.00</option>
+                <option value="brownieNueces">Brownie con Nueces - $12.00</option>
+                <option value="muffin">Muffin - $8.00</option>
+                <option value="mousseMaracuya">Mousse de Maracuyá - $8.00</option>
+              </select>
+            </div>            
+          
+            <div class="campo">
+              <label for="comentarios">Comentarios:</label>
+              <textarea id="comentarios" name="comentarios" rows="4" required></textarea>
+            </div>
+          
+            <div class="campo">
+              <label>
+                <input type="checkbox" id="aceptacion" name="aceptacion" required />
+                Acepto los <a href="#"> términos y condiciones</a>
+              </label>
+            </div>                     
+          
+            <button type="submit">Enviar</button>
+          </form>          
+        </section>
+      </main>
+
+      <footer>
+        <p>Visítanos y endulza tu día 🍰 © 2025 Dulce Sabor</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("formContacto").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        var nombre = document.getElementById("nombre").value;
+        var correo = document.getElementById("correo").value;
+        var tipoPastel = document.getElementById("tipoPastel").value;
+        var comentarios = document.getElementById("comentarios").value;
+        var aceptacion = document.getElementById("aceptacion").checked;
+
+        if (!aceptacion) {
+          alert("Debes aceptar los términos y condiciones.");
+          return;
+        }
+
+        alert("¡Gracias por contactarnos, " + nombre + "!\n" +
+              "Nos pondremos en contacto contigo a través del correo: " + correo + ".\n" +
+              "Tipo de pastel: " + tipoPastel + "\n" +
+              "Comentarios: " + comentarios);
+        
+        this.reset();
+      });
+    </script>
+  </body>
+</html>

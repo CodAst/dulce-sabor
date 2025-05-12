@@ -1,20 +1,305 @@
-/* estilos.css - Estilos base para Dulce Sabor */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
 body {
-    background-color: #fff8f0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff5f7;
+    font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
     color: #4b2e2e;
 }
 
 .container {
-    width: 900px;
+    width: 90%;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-header, footer {
-    background-color: #f4d3c2;
+header {
+    background-color: #f2a6b2;
     padding: 1em;
+    text-align: center;
+    border-radius: 10px;
     margin-bottom: 1em;
+}
+
+header img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #a05252;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #f2a6b2;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #a05252;
+    font-size: 1.3em;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #d47c7c;
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.carrusel {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 1em;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: block;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+main section {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+/**/
+
+.sobre-nosotros {
+    background-color: #fff5f7;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .sobre-nosotros h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #b35d6a;
+  }
+  
+  .mision-vision {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  
+  .info-box {
+    background: #fff;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 0 10px #f4c2c2
+  }
+  
+  .info-box img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .info-box h3 {
+    color: #d86c82;
+    margin-bottom: 10px;
+  }
+  
+  .info-box p {
+    font-size: 0.95em;
+    color: #333;
+  }
+  
+  .valores-box {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #f4c2c2;
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .valores-box img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .valores-box h3 {
+    color: #d86c82;
+    margin-bottom: 10px;
+  }
+  
+  .valores-box p {
+    font-size: 0.95em;
+    color: #333;
+  }
+  
+  .info-box img,
+    .valores-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    }
+
+/**/
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    justify-items: center;
+}
+
+.producto {
+    background-color: #fff;
+    border: 2px solid #fcd6d8;
+    border-radius: 10px;
+    padding: 1em;
+    transition: transform 0.2s;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+.producto img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.producto h3 {
+    margin-top: 0.5em;
+    color: #a05252;
+}
+
+.precio {
+    font-weight: bold;
+    color: #d64f4f;
+}
+
+.formulario-contacto {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #f3c4c4;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.campo {
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.6em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+button {
+    background-color: #f08989;
+    color: white;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e26d6d;
+}
+/**/
+.campo label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #4b2e2e;
+    justify-content: flex-start;
+}
+
+.campo input[type="checkbox"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+    margin-left: 0;
+}
+
+
+select {
+    width: 100%;
+    padding: 0.6em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fff;
+    color: #4b2e2e;
+    font-size: 1em;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #f08989;
+    outline: none;
+}
+
+
+/**/
+
+footer {
+    background-color: #fcd6d8;
+    padding: 1em;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 2em;
 }

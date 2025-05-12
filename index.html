@@ -5,27 +5,71 @@
     <title>Dulce Sabor</title>
     <link rel="stylesheet" href="css/estilos.css" />
   </head>
+
   <body>
     <div class="container">
       <header>
-        <h1>Dulce Sabor</h1>
+        <img src="img/logo.png" alt="Logo Dulce Sabor" class="logo">
         <nav>
-          <a href="index.html">Inicio</a>
-          <a href="tienda.html">Tienda</a>
-          <a href="contacto.html">Contacto</a>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
         </nav>
-      </header>
+      </header>    
 
       <main>
-        <section>
-          <h2>Bienvenidos a Dulce Sabor</h2>
-          <p>Descubre los mejores pasteles artesanales de la ciudad.</p>
+        <section class="bienvenida">
+          <h1>¡Bienvenido a Dulce Sabor!</h1>
+          <p>Deliciosos postres para cada ocasión. Amor y dulzura en cada bocado.</p>
         </section>
+        
+        <section class="carrusel">
+          <img src="img/pastel.jpg" alt="Pastel" class="slide active" />
+          <img src="img/cupcakes.jpg" alt="Cupcakes" class="slide" />
+        </section>      
       </main>
+
+      <section class="sobre-nosotros">
+        <h1>Sobre Nosotros</h1>
+        <div class="mision-vision">
+          <div class="info-box">
+            <img src="img/mision.jpg" alt="Misión">
+            <h3>Misión</h3>
+            <p>Ofrecer postres artesanales que endulcen los momentos especiales de nuestros clientes con calidad, sabor y amor.</p>
+          </div>
+          <div class="info-box">
+            <img src="img/vision.png" alt="Visión">
+            <h3>Visión</h3>
+            <p>Ser la pastelería preferida por quienes buscan un toque dulce y auténtico en su día a día.</p>
+          </div>
+        </div>
+      
+        <div class="valores-box">
+          <img src="img/valores.png" alt="Valores">
+          <h3>Valores</h3>
+          <p>Pasión, creatividad, responsabilidad y compromiso con la excelencia.</p>
+        </div>
+      </section>      
 
       <footer>
         <p>Visítanos y endulza tu día 🍰 © 2025 Dulce Sabor</p>
       </footer>
     </div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.slide');
+        let index = 0;
+
+        setInterval(() => {
+          slides[index].classList.remove('active');
+          index = (index + 1) % slides.length;
+          slides[index].classList.add('active');
+        }, 3000);
+      });
+    </script>
+
   </body>
 </html>
