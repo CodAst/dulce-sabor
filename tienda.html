@@ -1,77 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tienda - Dulce Sabor</title>
-    <link rel="stylesheet" href="css/estilos.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Tienda - Dulce Sabor</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="img/logo.png" alt="Logo Dulce Sabor" class="logo">
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <h2>Nuestros productos</h2>
+    <main>
+      <section class="productos">      
 
-  <body>
-    <div class="container">
-      <header>
-        <img src="img/logo.png" alt="Logo Dulce Sabor" class="logo">
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="tienda.html">Tienda</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-      </header>
-      
-      <h2>Nuestros productos</h2>
-      <main>
-        <section class="productos">      
+        <!-- Productos -->
+        <div class="producto">
+          <img src="img/pie_manzana.jpg" alt="Pastel" />
+          <h3>Pie de Manzana</h3>
+          <p class="precio">$15.00</p>
+          <button data-nombre="Pie de Manzana" data-precio="15.00">Comprar</button>
+        </div>
+        
+        <div class="producto">
+          <img src="img/cupcake_vainilla.jpg" alt="Cupcakes" />
+          <h3>Cupcakes Vainilla</h3>
+          <p class="precio">$10.00</p>
+          <button data-nombre="Cupcakes Vainilla" data-precio="10.00">Comprar</button>
+        </div>
 
-          <!-- Fila 1 de productos -->
-          <div class="producto">
-            <img src="img/pie_manzana.jpg" alt="Pastel" />
-            <h3>Pie de Manzana</h3>
-            <p class="precio">$15.00</p>
-            <button>Comprar</button>
-          </div>
-          
-          <div class="producto">
-            <img src="img/cupcake_vainilla.jpg" alt="Cupcakes" />
-            <h3>Cupcakes Vainilla</h3>
-            <p class="precio">$10.00</p>
-            <button>Comprar</button>
-          </div>
+        <div class="producto">
+          <img src="img/tarta_frambuesa.jpg" alt="Tarta" />
+          <h3>Tarta de Frambuesa</h3>
+          <p class="precio">$18.00</p>
+          <button data-nombre="Tarta de Frambuesa" data-precio="18.00">Comprar</button>
+        </div>
 
-          <div class="producto">
-            <img src="img/tarta_frambuesa.jpg" alt="Tarta" />
-            <h3>Tarta de Frambuesa</h3>
-            <p class="precio">$18.00</p>
-            <button>Comprar</button>
-          </div>
+        <div class="producto">
+          <img src="img/galleta_avena.jpg" alt="Galletas" />
+          <h3>Galletas de Avena</h3>
+          <p class="precio">$5.00</p>
+          <button data-nombre="Galletas de Avena" data-precio="5.00">Comprar</button>
+        </div>
 
-          <!-- Fila 2 de productos -->
-          <div class="producto">
-            <img src="img/galleta_avena.jpg" alt="Galletas" />
-            <h3>Galletas de Avena</h3>
-            <p class="precio">$5.00</p>
-            <button>Comprar</button>
-          </div>
+        <div class="producto">
+          <img src="img/brownie_nueces.jpg" alt="Brownie" />
+          <h3>Brownie con Nueces</h3>
+          <p class="precio">$12.00</p>
+          <button data-nombre="Brownie con Nueces" data-precio="12.00">Comprar</button>
+        </div>
 
-          <div class="producto">
-            <img src="img/brownie_nueces.jpg" alt="Brownie" />
-            <h3>Brownie con Nueces</h3>
-            <p class="precio">$12.00</p>
-            <button>Comprar</button>
-          </div>
+        <div class="producto">
+          <img src="img/mousse_maracuya.jpg" alt="Muffin" />
+          <h3>Mousse de Maracuya</h3>
+          <p class="precio">$8.00</p>
+          <button data-nombre="Mousse de Maracuya" data-precio="8.00">Comprar</button>
+        </div>
+      </section>
+    </main>
 
-          <div class="producto">
-            <img src="img/mousse_maracuya.jpg" alt="Muffin" />
-            <h3>Mousse de Maracuya</h3>
-            <p class="precio">$8.00</p>
-            <button>Comprar</button>
-          </div>
-        </section>
-      </main>
+    <footer>
+      <p>Visítanos y endulza tu día 🍰 © 2025 Dulce Sabor</p>
+    </footer>
+  </div>
 
-      <footer>
-        <p>Visítanos y endulza tu día 🍰 © 2025 Dulce Sabor</p>
-      </footer>
-    </div>
-  </body>
+  <!-- Carrito fijo en pantalla -->
+  <div id="carrito-total">
+    <h4>🛒 Carrito</h4>
+    <ul id="lista-carrito"></ul>
+    <p><strong>Total:</strong> $<span id="total-num">0.00</span></p>
+  </div>
+
+  <script>
+    let total = 0;
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalSpan = document.getElementById("total-num");
+
+    const estiloCarrito = `
+  #carrito-total {
+    position: fixed;
+    top: 20px; /* Cambiado de bottom a top */
+    right: 20px;
+    background-color: #ffe4e1;
+    color: #4b2e2e;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-size: 16px;
+    max-width: 250px;
+  }
+  #carrito-total h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  #lista-carrito {
+    list-style: none;
+    padding-left: 0;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  #lista-carrito li {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .eliminar {
+    background: none;
+    border: none;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+  }
+`;
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = estiloCarrito;
+    document.head.appendChild(styleSheet);
+
+    const botones = document.querySelectorAll('button[data-precio]');
+
+    botones.forEach(boton => {
+      boton.addEventListener('click', () => {
+        const nombre = boton.getAttribute('data-nombre');
+        const precio = parseFloat(boton.getAttribute('data-precio'));
+
+        total += precio;
+        totalSpan.textContent = total.toFixed(2);
+
+        const li = document.createElement("li");
+        li.innerHTML = `${nombre} - $${precio.toFixed(2)} <button class="eliminar">❌</button>`;
+        listaCarrito.appendChild(li);
+
+        li.querySelector(".eliminar").addEventListener("click", () => {
+          total -= precio;
+          totalSpan.textContent = total.toFixed(2);
+          li.remove();
+        });
+      });
+    });
+  </script>
+</body>
 </html>
