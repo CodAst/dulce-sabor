@@ -304,3 +304,52 @@ footer {
     border-radius: 10px;
     margin-top: 2em;
 }
+
+#carrito-total {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ffe4e1;
+    color: #4b2e2e;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-size: 16px;
+    max-width: 250px;
+  }
+  
+  #carrito-total h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  #lista-carrito {
+    list-style: none;
+    padding-left: 0;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  #lista-carrito li {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sumar,
+  .restar,
+  .eliminar {
+    margin-top: 4px;
+    background: none;
+    border: none;
+    color: #4b2e2e;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .eliminar {
+    color: red;
+  }
+  

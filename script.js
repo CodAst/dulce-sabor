@@ -1,84 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    let index = 0;
-
-    setInterval(() => {
-      slides[index].classList.remove('active');
-      index = (index + 1) % slides.length;
-      slides[index].classList.add('active');
-    }, 3000);
-  });
-
+document.addEventListener("DOMContentLoaded", () => {
+  let total = 0;
   const listaCarrito = document.getElementById("lista-carrito");
   const totalSpan = document.getElementById("total-num");
-  let carrito = [];
 
-  function actualizarCarrito() {
-    listaCarrito.innerHTML = "";
-    let total = 0;
-
-    carrito.forEach((item, index) => {
-      total += item.precio * item.cantidad;
-
-      const li = document.createElement("li");
-      li.innerHTML = `
-        ${item.nombre} - $${item.precio.toFixed(2)} x ${item.cantidad}
-        <button class="restar" data-index="${index}">➖</button>
-        <button class="sumar" data-index="${index}">➕</button>
-        <button class="eliminar" data-index="${index}">❌</button>
-      `;
-      listaCarrito.appendChild(li);
-    });
-
-    totalSpan.textContent = total.toFixed(2);
-
-    // Eventos para los botones
-    document.querySelectorAll(".sumar").forEach(btn =>
-      btn.addEventListener("click", () => {
-        const i = btn.getAttribute("data-index");
-        carrito[i].cantidad++;
-        actualizarCarrito();
-      })
-    );
-
-    document.querySelectorAll(".restar").forEach(btn =>
-      btn.addEventListener("click", () => {
-        const i = btn.getAttribute("data-index");
-        if (carrito[i].cantidad > 1) {
-          carrito[i].cantidad--;
-        } else {
-          carrito.splice(i, 1);
-        }
-        actualizarCarrito();
-      })
-    );
-
-    document.querySelectorAll(".eliminar").forEach(btn =>
-      btn.addEventListener("click", () => {
-        const i = btn.getAttribute("data-index");
-        carrito.splice(i, 1);
-        actualizarCarrito();
-      })
-    );
-  }
-
-  document.querySelectorAll('button[data-precio]').forEach(boton => {
-    boton.addEventListener("click", () => {
-      const nombre = boton.getAttribute("data-nombre");
-      const precio = parseFloat(boton.getAttribute("data-precio"));
-
-      const existe = carrito.find(item => item.nombre === nombre);
-      if (existe) {
-        existe.cantidad++;
-      } else {
-        carrito.push({ nombre, precio, cantidad: 1 });
-      }
-
-      actualizarCarrito();
-    });
-  });
-
-  // Estilo dinámico del carrito
   const estiloCarrito = `
     #carrito-total {
       position: fixed;
@@ -106,22 +30,46 @@ document.addEventListener('DOMContentLoaded', () => {
     #lista-carrito li {
       margin-bottom: 5px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
     }
-    .sumar, .restar, .eliminar {
-      margin-top: 4px;
+    .eliminar {
       background: none;
       border: none;
-      color: #4b2e2e;
+      color: red;
       font-weight: bold;
       cursor: pointer;
       font-size: 16px;
-    }
-    .eliminar {
-      color: red;
     }
   `;
   const styleSheet = document.createElement("style");
   styleSheet.type = "text/css";
   styleSheet.innerText = estiloCarrito;
   document.head.appendChild(styleSheet);
+
+  const botones = document.querySelectorAll('button[data-precio]');
+
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const nombre = boton.getAttribute('data-nombre');
+      const precio = parseFloat(boton.getAttribute('data-precio'));
+
+      total += precio;
+      totalSpan.textContent = total.toFixed(2);
+
+      const li = document.createElement("li");
+      li.innerHTML = `${nombre} - $${precio.toFixed(2)} <button class="eliminar">❌</button>`;
+      listaCarrito.appendChild(li);
+
+      li.querySelector(".eliminar").addEventListener("click", () => {
+        total -= precio;
+        totalSpan.textContent = total.toFixed(2);
+        li.remove();
+      });
+    });
+  });
+  const botonComprar = document.getElementById("boton-comprar");
+
+
+
+});
