@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const listaCarrito = document.getElementById("lista-carrito");
   const totalSpan = document.getElementById("total-num");
 
+  // Botones para agregar productos al carrito
   const botones = document.querySelectorAll('button[data-precio]');
 
   botones.forEach(boton => {
@@ -27,23 +28,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ALERTA DE PAGO
   const botonComprar = document.getElementById("boton-comprar");
-  botonComprar.addEventListener("click", () => {
-    if (total > 0) {
-      alert("🧁 Dulce compra realizada");
-    } else {
-      alert("El carrito está vacío");
-    }
-  });
+  if (botonComprar) {
+    botonComprar.addEventListener("click", () => {
+      if (total > 0) {
+        alert("🧁 Dulce compra realizada");
+      } else {
+        alert("El carrito está vacío");
+      }
+    });
+  }
 
-  //CARRUSEL
-  document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    let index = 0;
+  // CARRUSEL
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
 
-    setInterval(() => {
+  setInterval(() => {
+    if (slides.length > 0) {
       slides[index].classList.remove('active');
       index = (index + 1) % slides.length;
       slides[index].classList.add('active');
-    }, 3000);
-  });
+    }
+  }, 3000);
+
+  // CONTACTO
+  const formContacto = document.getElementById("formContacto");
+
+  if (formContacto) {
+    formContacto.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Obtener los valores de los campos
+      const nombre = document.getElementById("nombre").value;
+      const correo = document.getElementById("correo").value;
+      const tipoProducto = document.getElementById("tipoProducto").value;
+      const comentarios = document.getElementById("comentarios").value;
+      const aceptacion = document.getElementById("aceptacion").checked;
+
+      // Depuración en la consola para verificar que los valores se están obteniendo correctamente
+      console.log("Nombre:", nombre);
+      console.log("Correo:", correo);
+      console.log("Tipo de producto:", tipoProducto);
+      console.log("Comentarios:", comentarios);
+      console.log("Aceptación de términos:", aceptacion);
+
+      // Validación
+      if (!aceptacion) {
+        alert("Debes aceptar los términos y condiciones.");
+        return;
+      }
+
+      // Alerta de confirmación
+      alert(`¡Gracias por contactarnos, ${nombre}!\n` +
+            `Nos pondremos en contacto contigo a través del correo: ${correo}.\n` +
+            `Tipo de producto: ${tipoProducto}\n` +
+            `Comentarios: ${comentarios}`);
+
+      // Limpiar el formulario
+      formContacto.reset();
+    });
+  }
 });

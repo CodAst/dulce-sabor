@@ -60,7 +60,8 @@
             </div>                     
           
             <button type="submit">Enviar</button>
-          </form>          
+          </form>
+       
         </section>
       </main>
 
@@ -68,29 +69,6 @@
         <p>Visítanos y endulza tu día 🍰 © 2025 Dulce Sabor</p>
       </footer>
     </div>
-
-    <script>
-      document.getElementById("formContacto").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        var nombre = document.getElementById("nombre").value;
-        var correo = document.getElementById("correo").value;
-        var tipoPastel = document.getElementById("tipoPastel").value;
-        var comentarios = document.getElementById("comentarios").value;
-        var aceptacion = document.getElementById("aceptacion").checked;
-
-        if (!aceptacion) {
-          alert("Debes aceptar los términos y condiciones.");
-          return;
-        }
-
-        alert("¡Gracias por contactarnos, " + nombre + "!\n" +
-              "Nos pondremos en contacto contigo a través del correo: " + correo + ".\n" +
-              "Tipo de pastel: " + tipoPastel + "\n" +
-              "Comentarios: " + comentarios);
-        
-        this.reset();
-      });
-    </script>
+    <script src="script.js" defer></script>
   </body>
 </html>
