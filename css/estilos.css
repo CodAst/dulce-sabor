@@ -406,4 +406,55 @@ footer {
     cursor: pointer;
     font-weight: bold;
   }
+
+  .receta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2em;
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #f4c2c2;
+}
+
+.receta-img {
+    width: 40%;
+    max-width: 250px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.receta .contenido {
+    width: 55%;
+    text-align: left;
+}
+
+.receta h3 {
+    font-size: 2em;
+    color: #b35d6a;
+}
+
+.receta ul, .receta ol {
+    text-align: left;
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .receta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .receta-img {
+        width: 80%;
+        margin-bottom: 1em;
+    }
+
+    .receta .contenido {
+        width: 100%;
+    }
+}
+
   

@@ -57,21 +57,18 @@ document.addEventListener("DOMContentLoaded", () => {
     formContacto.addEventListener("submit", function(e) {
       e.preventDefault();
 
-      // Obtener los valores de los campos
       const nombre = document.getElementById("nombre").value;
       const correo = document.getElementById("correo").value;
       const tipoProducto = document.getElementById("tipoProducto").value;
       const comentarios = document.getElementById("comentarios").value;
       const aceptacion = document.getElementById("aceptacion").checked;
 
-      // Depuración en la consola para verificar que los valores se están obteniendo correctamente
       console.log("Nombre:", nombre);
       console.log("Correo:", correo);
       console.log("Tipo de producto:", tipoProducto);
       console.log("Comentarios:", comentarios);
       console.log("Aceptación de términos:", aceptacion);
 
-      // Validación
       if (!aceptacion) {
         alert("Debes aceptar los términos y condiciones.");
         return;
